@@ -1,0 +1,48 @@
+<div class="table-responsive">
+<table *ngIf="contacts; else loading" class="table table-hover header-fixed">
+  <caption class="header-text-css"><strong>Contact List</strong>
+    <button (click)="showDetails(contactObj, 2)" class="btn btn-primary mb-1 btn-sm pull-right">
+      Add
+    </button>
+  </caption>
+  <thead>
+    <tr>
+      <th>S.No.</th>
+      <th class="col-with-20-per">Name</th>
+      <th class="col-with-30-per">Email</th>
+      <th class="col-with-20-per">Phone</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contactObj of contacts; let contactIndex = index; trackBy: contactsTrackByFn">
+      <th scope="row">{{contactIndex+1}}</th>
+      <td>{{contactObj.firstName}} {{contactObj.lastName}}</td>
+      <td>{{contactObj.email}}</td>
+      <td>{{contactObj.phoneNumber}}</td>
+      <td>
+        <span class="float-right">
+
+          <button (click)="showDetails(contactObj, 1)" class="btn btn-info mb-1 btn-sm">
+            DETAILS
+          </button>
+
+          <button (click)="showDetails(contactObj, 3)" class="btn btn-warning mb-1 btn-sm btn-space">
+            EDIT
+          </button>
+
+          <button (click)="showDetails(contactObj, 4)" class="btn btn-danger mb-1 btn-sm">
+            DELETE
+          </button>
+
+        </span>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<ng-template #loading>
+  <span>loading contacts...</span>
+</ng-template>

@@ -1,0 +1,20 @@
+.header-text-css {
+    font-size: 21px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.col-with-30-per {
+    width: 30%;
+}
+
+.col-with-20-per {
+    width: 20%;
+}
+
+.btn {
+    width: 70px;
+}
+
+.btn-space {
+    margin: 0 8px;
+}

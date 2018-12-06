@@ -1,0 +1,13 @@
+.required-css, .form-group span {
+    color: red;
+}
+
+.btn-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
+legend {
+    padding: 8px 0;
+    color: #777;
+}

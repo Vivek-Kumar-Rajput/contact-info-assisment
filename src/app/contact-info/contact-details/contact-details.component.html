@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <form (submit)="submit()" class="form" [formGroup]="contactForm">
+      <fieldset [disabled]="isReadOnly">
+        <legend>Conatct details:</legend>
+        <div class="form-group" [ngClass]="{'has-error': (contactForm.controls.firstName?.touched && contactForm.hasError('required', ['firstName']))}">
+          <label for="firstName">First Name <span class="required-css">*</span></label>
+          <input class="form-control" id="firstName" type="text" maxlength="50" formControlName="firstName">
+          <span *ngIf="contactForm.controls.firstName?.touched && contactForm.hasError('required', ['firstName'])">This
+            field is required</span>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': (contactForm.controls.lastName?.touched && contactForm.hasError('required', ['lastName']))}">
+          <label for="lastName">Last Name <span class="required-css">*</span></label>
+          <input class="form-control" id="lastName" type="text" maxlength="50" formControlName="lastName">
+          <span *ngIf="contactForm.controls.lastName?.touched && contactForm.hasError('required', ['lastName'])">This
+            field is required</span>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': (contactForm.controls.email?.touched && (contactForm.hasError('required', ['email'])||contactForm.hasError('pattern', ['email'])))}">
+          <label for="email">Email <span class="required-css">*</span></label>
+          <input class="form-control" id="email" type="text" maxlength="50" formControlName="email">
+          <span *ngIf="contactForm.controls.email?.touched && contactForm.hasError('required', ['email'])">This field is
+            required</span>
+          <span *ngIf="contactForm.controls.email?.touched && contactForm.hasError('pattern', ['email'])">Invalid email
+            format</span>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': (contactForm.controls.phoneNumber?.touched && (contactForm.hasError('required', ['phoneNumber'])||contactForm.hasError('pattern', ['phoneNumber'])))}">
+          <label for="phoneNumber">Phone Number <span class="required-css">*</span></label>
+          <input class="form-control" id="phoneNumber" maxlength="10" minlength="10" type="text" formControlName="phoneNumber">
+          <span *ngIf="contactForm.controls.phoneNumber?.touched && contactForm.hasError('required', ['phoneNumber'])">This
+            field is required</span>
+          <span *ngIf="contactForm.controls.phoneNumber?.touched && contactForm.hasError('pattern', ['phoneNumber'])">phone
+            number should be 10 digit long and allow number only</span>
+        </div>
+        <input type="text" formControlName="contactId" hidden>
+        <div class="form-group" [ngClass]="{'has-error': (contactForm.controls.status?.touched && contactForm.hasError('required', ['status']))}">
+          <label for="status">Status <span class="required-css">*</span></label>
+          <select class="form-control" id="status" type="text" formControlName="status">
+            <option value="Active">Active</option>
+            <option value="Inctive">Inctive</option>
+          </select>
+          <span *ngIf="contactForm.controls.status?.touched && contactForm.hasError('required', ['status'])">This
+            field is required</span>
+        </div>
+        <br />
+        <button class="form-control" type="submit" [disabled]="!contactForm.valid" class="btn btn-success float-right btn-width">
+          Submit
+        </button>
+        <button type="reset" class="btn btn-danger float-right btn-width">
+          Reset
+        </button>
+      </fieldset>
+      <button type="button" class="btn btn-info float-right btn-width" (click)="navigateToList()">
+        Back
+      </button>
+    </form>
+  </div>
+</div>
